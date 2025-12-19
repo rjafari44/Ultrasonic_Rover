@@ -7,6 +7,3 @@ arduino-cli compile --fqbn arduino:avr:nano --build-property "compiler.cpp.extra
 
 # Upload the code to the board
 arduino-cli upload -p $PORT --fqbn arduino:avr:nano
-
-# Open the Serial Monitor at baudrate of 115200 for user input
-arduino-cli monitor -p $PORT --config baudrate=115200

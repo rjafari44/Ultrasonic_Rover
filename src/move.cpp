@@ -1,9 +1,11 @@
 #include "myheader.h"
 
-const int motorSpeed {120};      // variable for speed (PWN, 0–255)
-const float turnMultiplier{0.7};
+/* A chart is provided on the README for how the different Movements are achieved with the TT motors */
 
-// ---------- Motor Control ----------
+const int motorSpeed {120};      // Global variable of integer type for speed (PWN, 0–255)
+const float turnMultiplier{0.7}; // Global variable of float type for turning speed multiplier
+
+// function for moving both motors forward, returns nothing
 void moveForward() {
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, LOW);
@@ -13,6 +15,7 @@ void moveForward() {
   analogWrite(ENB, motorSpeed);
 }
 
+// function for moving both motors backwards, returns nothing
 void moveBackward() {
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
@@ -22,8 +25,9 @@ void moveBackward() {
   analogWrite(ENB, motorSpeed);
 }
 
+// function for turning left at a set speed, returns nothing
 void turnLeft() {
-  int turnSpeed = motorSpeed * turnMultiplier;
+  int turnSpeed = motorSpeed * turnMultiplier; // calculate turning speed with the global variables
 
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
@@ -33,8 +37,9 @@ void turnLeft() {
   analogWrite(ENB, turnSpeed);
 }
 
+// function for turning right at a set speed, returns nothing
 void turnRight() {
-  int turnSpeed = motorSpeed * turnMultiplier;
+  int turnSpeed = motorSpeed * turnMultiplier; // calculate turning speed with the global variables
 
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, LOW);
@@ -44,6 +49,7 @@ void turnRight() {
   analogWrite(ENB, turnSpeed);
 }
 
+// function for stopping motor movement, returns nothing
 void stopMotors() {
   analogWrite(ENA, 0);
   analogWrite(ENB, 0);

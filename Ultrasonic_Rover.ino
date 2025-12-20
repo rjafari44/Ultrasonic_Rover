@@ -1,12 +1,13 @@
 #include "myheader.h"
 
-Servo myServo;
-const int servoPin{9};
-const int obstacleLimit{20};
-unsigned long forwardStartTime{};
-const unsigned long forwardTimeout{3000};
+Servo myServo;                            // define servo object
+const int servoPin{9};                    // set servo pin
+const int obstacleLimit{20};              // set detection limit (20 cm)
+unsigned long forwardStartTime{};         // variable to track time since movement
+const unsigned long forwardTimeout{3000}; // variable to limit movement after set time
 
 void setup() {
+  // setting the l298n pins as output
   pinMode(ENA, OUTPUT);
   pinMode(ENB, OUTPUT);
   pinMode(IN1, OUTPUT);
@@ -14,25 +15,30 @@ void setup() {
   pinMode(IN3, OUTPUT);
   pinMode(IN4, OUTPUT);
 
+  // setup the ultrasonic pins
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
 
+  // setup the servo 
   myServo.attach(servoPin);
   myServo.write(90); // center
   delay(1000);
 }
 
 void loop() {
-  int distance{};
-  int leftDist{};
-  int rightDist{};
-  bool obstacleDetected{};
-  bool forwardTimeoutReached{};
+  int distance{};               // variable of integer type for distance to an object
+  int leftDist{};               // variable of integer type for distance to an object on the left side
+  int rightDist{};              // variable of integer type for distance to an object on the right side
+  bool obstacleDetected{};      // variable of boolean type for object detected
+  bool forwardTimeoutReached{}; // variable of boolean type for forward movement
 
-  distance = getDistance();
+  distance = getDistance();  // get distance to object
 
-  obstacleDetected = (distance <= obstacleLimit);
-  forwardTimeoutReached = (forwardStartTime != 0 && millis() - forwardStartTime >= forwardTimeout);
+  // if obstacle is detected within detection limit, set true, otherwise false
+  obstacleDetected = (distance <= obstacleLimit); 
+
+  // if time since movement is not zero and time elapsed is more than 3 seconds, set true, otherwise false
+  forwardTimeoutReached = (forwardStartTime != 0 && millis() - forwardStartTime >= forwardTimeout); // if time since movement is not zero and time elapsed is more than 3 seconds, set true, otherwise false
 
   // Start forward motion if path is clear and not already moving
   if (distance > obstacleLimit && forwardStartTime == 0) {
@@ -40,7 +46,7 @@ void loop() {
     forwardStartTime = millis();
   }
 
-  // Run obstacle avoidance if either an obstacle is detected or 5 seconds have elapsed
+  // Run obstacle avoidance if either an obstacle is detected or set time has passed
   if (obstacleDetected || forwardTimeoutReached) {
     stopMotors();
     forwardStartTime = 0; // reset timer

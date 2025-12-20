@@ -1,8 +1,7 @@
 #include "myheader.h"
 
-// variable for motor speed limit
-const int motorSpeed {130};      // 0–255
-const float turnMultiplier{0.8};
+const int motorSpeed {120};      // variable for speed (PWN, 0–255)
+const float turnMultiplier{0.7};
 
 // ---------- Motor Control ----------
 void moveForward() {

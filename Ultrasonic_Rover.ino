@@ -6,6 +6,7 @@ const int obstacleLimit{20};              // set detection limit (20 cm)
 unsigned long forwardStartTime{};         // variable to track time since movement
 const unsigned long forwardTimeout{3000}; // variable to limit movement after set time
 
+// function for setting up the arduino code, runs once, returns nothing
 void setup() {
   // setting the l298n pins as output
   pinMode(ENA, OUTPUT);
@@ -25,6 +26,7 @@ void setup() {
   delay(1000);
 }
 
+// function for running the arduino code, loops, returns nothing
 void loop() {
   int distance{};               // variable of integer type for distance to an object
   int leftDist{};               // variable of integer type for distance to an object on the left side

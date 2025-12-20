@@ -79,7 +79,7 @@ int lookRight() {
 
     // recenter
     myServo.write(90);
-    delay(200);
+    delay(300);
 
     avgDistance = (distance1 + distance2)/2; // calculate average distance of two angles
 

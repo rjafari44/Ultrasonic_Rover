@@ -6,6 +6,7 @@ int getDistance() {
   int count{};
   long duration{};
   long avgDuration{};
+  int distance{};
 
   for (int i{}; i < 3; i++) {
     digitalWrite(trigPin, LOW);
@@ -28,29 +29,52 @@ int getDistance() {
     return 999;
   }
 
-  avgDuration = sum / count;
+  avgDuration = (sum / count);
+  distance = (avgDuration * 0.034 / 2 + 0.5);
 
-  return avgDuration * 0.034 / 2;
+  return distance;
 }
 
 
 // ---------- Servo Scan ----------
 int lookLeft() {
-  int distance{};
-  myServo.write(150);
+  int distance1{};
+  int distance2{};
+  int avgDistance{};
+
+  myServo.write(135);
   delay(500);
-  distance = getDistance();
+  distance1 = getDistance();
+
+  myServo.write(180);
+  delay(500);
+  distance2 = getDistance();
+
   myServo.write(90);
-  delay(200);
-  return distance;
+  delay(300);
+
+  avgDistance = (distance1 + distance2)/2;
+
+  return avgDistance;
 }
 
 int lookRight() {
-    int distance{};
-    myServo.write(30);
+    int distance1{};
+    int distance2{};
+    int avgDistance{};
+
+    myServo.write(45);
     delay(500);
-    distance = getDistance();
+    distance1 = getDistance();
+
+    myServo.write(0);
+    delay(500);
+    distance2 = getDistance();
+
     myServo.write(90);
     delay(200);
-    return distance;
+
+    avgDistance = (distance1 + distance2)/2;
+
+    return avgDistance;
 }

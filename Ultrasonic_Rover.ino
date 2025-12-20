@@ -4,7 +4,7 @@ Servo myServo;
 const int servoPin{9};
 const int obstacleLimit{20};
 unsigned long forwardStartTime{};
-const unsigned long forwardTimeout{5000};
+const unsigned long forwardTimeout{3000};
 
 void setup() {
   pinMode(ENA, OUTPUT);

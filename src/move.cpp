@@ -2,8 +2,8 @@
 
 /* A chart is provided on the README for how the different Movements are achieved with the TT motors */
 
-const int motorSpeed {120};      // Global variable of integer type for speed (PWN, 0–255)
-const float turnMultiplier{0.7}; // Global variable of float type for turning speed multiplier
+const int motorSpeed {150};      // Global variable of integer type for speed (PWN, 0–255)
+const float turnMultiplier{0.8}; // Global variable of float type for turning speed multiplier
 
 // function for moving both motors forward, returns nothing
 void moveForward() {

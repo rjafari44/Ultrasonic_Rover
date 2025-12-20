@@ -1,7 +1,7 @@
 #include "myheader.h"
 
 // variable for motor speed limit
-const int motorSpeed {150};      // 0–255
+const int motorSpeed {130};      // 0–255
 
 // ---------- Motor Control ----------
 void moveForward() {

@@ -48,7 +48,7 @@ void loop() {
     // Back up a bit
     delay(200);
     moveBackward();
-    delay(400);
+    delay(300);
     stopMotors();
 
     // Look left and right

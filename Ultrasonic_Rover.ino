@@ -1,11 +1,10 @@
 #include "myheader.h"
 
-Servo myServo;   // create servo object
-const int servoPin{9};       // set servo pin
-const int obstacleLimit{20}; // distance threshold
-
-unsigned long forwardStartTime{};          // tracks forward motion start
-const unsigned long forwardTimeout{5000};   // 5 seconds
+Servo myServo;
+const int servoPin{9};
+const int obstacleLimit{20};
+unsigned long forwardStartTime{};
+const unsigned long forwardTimeout{5000};
 
 void setup() {
   pinMode(ENA, OUTPUT);
@@ -27,29 +26,24 @@ void loop() {
   int distance{};
   int leftDist{};
   int rightDist{};
-  
+  bool obstacleDetected{};
+  bool forwardTimeoutReached{};
+
   distance = getDistance();
 
-  // forward logic
-  if (distance > obstacleLimit) {
+  obstacleDetected = (distance <= obstacleLimit);
+  forwardTimeoutReached = (forwardStartTime != 0 && millis() - forwardStartTime >= forwardTimeout);
 
-    // Start moving forward if not already
-    if (forwardStartTime == 0) {
-      moveForward();
-      forwardStartTime = millis();
-    }
+  // Start forward motion if path is clear and not already moving
+  if (distance > obstacleLimit && forwardStartTime == 0) {
+    moveForward();
+    forwardStartTime = millis();
+  }
 
-    // Stop after 5 seconds max
-    if (millis() - forwardStartTime >= forwardTimeout) {
-      stopMotors();
-      forwardStartTime = 0; // reset
-    }
-
-    // Exit loop early; forward motion handled
-    return;
-  } else {
+  // Run obstacle avoidance if either an obstacle is detected or 5 seconds have elapsed
+  if (obstacleDetected || forwardTimeoutReached) {
     stopMotors();
-    forwardStartTime = 0; // reset in case it wasn't already
+    forwardStartTime = 0; // reset timer
 
     // Back up a bit
     delay(200);
@@ -65,7 +59,7 @@ void loop() {
     if (leftDist > rightDist) {
       turnLeft();
     } else {
-      turnRight();
+        turnRight();
     }
 
     delay(400);

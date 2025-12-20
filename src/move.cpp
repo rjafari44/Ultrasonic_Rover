@@ -2,6 +2,7 @@
 
 // variable for motor speed limit
 const int motorSpeed {130};      // 0–255
+const float turnMultiplier{0.8};
 
 // ---------- Motor Control ----------
 void moveForward() {
@@ -23,7 +24,6 @@ void moveBackward() {
 }
 
 void turnLeft() {
-  float turnMultiplier{0.8};
   int turnSpeed = motorSpeed * turnMultiplier;
 
   digitalWrite(IN1, LOW);
@@ -35,7 +35,6 @@ void turnLeft() {
 }
 
 void turnRight() {
-  float turnMultiplier{0.8};
   int turnSpeed = motorSpeed * turnMultiplier;
 
   digitalWrite(IN1, HIGH);

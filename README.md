@@ -28,7 +28,7 @@
 ---
 
 ### Mechanical:
-The chassis is custom-designed, and the wheels are inspired by a design from Prof. Wolken at Irvine Valley College. I resized the wheels and adjusted the spoke radii to suit my design The ultrasonic sensor bracket is not included in this repository. I recommend sourcing or designing one that best fits your build. Many suitable brackets can be found online (e.g., searching “HC-SR04 bracket” on Printables).
+The chassis is custom-designed, and the wheels are inspired by a design from Prof. Wolken at Irvine Valley College. The ultrasonic sensor bracket is not included in this repository. I recommend sourcing or designing one that best fits your build. Many suitable brackets can be found online (e.g., searching “HC-SR04 bracket” on Printables).
 - **Printing:** Chassis and wheels were 3D printed with PLA.
 - **Chassis Features:**
   - Holes for zipties to secure the motors and components

@@ -14,10 +14,12 @@
 - Arduino Nano
 - HC-SR04 ultrasonic distance sensor
 - 2× TT DC gear motors
+- 2x TT motor wheels
+- Two port screw terminal
 - L298N motor driver
 - Micro servo (MG90 used; SG90 recommended)
 - 2× 18650 Li-ion batteries (with holder)
-- 470 µF electrolytic capacitor
+- 470 µF 16 V electrolytic capacitor
 - Breadboard
 - Dupont jumper wires
 - 3D-printed chassis and wheels (PLA)

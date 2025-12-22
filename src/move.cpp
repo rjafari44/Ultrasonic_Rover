@@ -27,7 +27,9 @@ void moveBackward() {
 
 // function for turning left at a set speed, returns nothing
 void turnLeft() {
-  int turnSpeed = motorSpeed * turnMultiplier; // calculate turning speed with the global variables
+  int turnSpeed{}; // variable of integer type for turn speed
+
+  turnSpeed = motorSpeed * turnMultiplier; // calculate turning speed with the global variables
 
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
@@ -39,7 +41,9 @@ void turnLeft() {
 
 // function for turning right at a set speed, returns nothing
 void turnRight() {
-  int turnSpeed = motorSpeed * turnMultiplier; // calculate turning speed with the global variables
+  int turnSpeed{}; // variable of integer type for turn speed
+
+  turnSpeed = motorSpeed * turnMultiplier; // calculate turning speed with the global variables
 
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, LOW);
